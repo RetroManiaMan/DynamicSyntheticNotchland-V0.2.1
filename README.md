@@ -13,6 +13,4 @@ bun install
 bun run build
 ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
 Load the generated `dist` directory as an unpacked extension from the browser's extensions page.
