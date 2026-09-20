@@ -1,0 +1,21 @@
+html, body, #root {
+  margin: 0;
+  min-height: 100%;
+  min-height: 100vh;
+  font-family: Inter, 'Segoe UI', sans-serif;
+  background: #111318;
+}
+
+body {
+  min-height: 100vh;
+  color: #f5f7fa;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
