@@ -10,12 +10,44 @@ export function DSNApp() {
   const [isHovered, setIsHovered] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const shellRef = useRef<HTMLDivElement | null>(null)
+  const expandedRef = useRef(false)
   const { formattedTime } = Clock()
+
+  useEffect(() => {
+    expandedRef.current = isExpanded || isHovered
+  }, [isExpanded, isHovered])
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setIsExpanded(false)
+        return
+      }
+
+      const target = event.target as HTMLElement
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+        return
+      }
+
+      if (event.ctrlKey || event.metaKey || event.altKey) {
+        return
+      }
+
+      if (event.key === 'n' || event.key === 'N') {
+        event.preventDefault()
+        if (expandedRef.current) {
+          setIsExpanded(false)
+          setIsHovered(false)
+        } else {
+          setIsExpanded(true)
+        }
+      } else if (event.key === '/' && expandedRef.current) {
+        event.preventDefault()
+        shellRef.current?.querySelector('.dsn-search-input')?.focus()
+      } else if (['1', '2', '3'].includes(event.key) && expandedRef.current) {
+        event.preventDefault()
+        const buttons = shellRef.current?.querySelectorAll('.dsn-action')
+        buttons?.[Number(event.key) - 1]?.click()
       }
     }
 
