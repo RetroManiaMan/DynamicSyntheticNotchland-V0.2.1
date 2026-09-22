@@ -1,14 +1,19 @@
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   min-height: 100%;
   min-height: 100vh;
   font-family: Inter, 'Segoe UI', sans-serif;
-  background: #111318;
 }
 
 body {
   min-height: 100vh;
   color: #f5f7fa;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 0%, rgba(28, 33, 38, 0.8), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 100%, rgba(22, 26, 30, 0.6), transparent 70%),
+    #08090a;
 }
 
 button,
