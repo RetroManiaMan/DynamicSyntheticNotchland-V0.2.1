@@ -1,8 +1,7 @@
-import { DSNApp } from './content/DSNApp'
-import './content/dsn.css'
+import { NewTabApp } from './newtab/NewTabApp'
 
 function App() {
-  return <DSNApp />
+  return <NewTabApp />
 }
 
 export default App
