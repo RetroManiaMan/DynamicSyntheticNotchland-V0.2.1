@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { useClock } from './useClock'
+import { useBookmarks } from './useBookmarks'
 import { AboutPanel } from './AboutPanel'
 import { AppsLauncher } from './AppsLauncher'
+import { BookmarkModal } from './BookmarkModal'
 import { CommandsPanel } from './CommandsPanel'
 import { QuickAccess } from './QuickAccess'
 import { QuickActions } from './QuickActions'
@@ -43,13 +45,16 @@ function normalizeUrl(input: string): string {
 export function NewTabApp() {
   const [searchValue, setSearchValue] = useState('')
   const [activeView, setActiveView] = useState<View>('home')
+  const [showBookmarkModal, setShowBookmarkModal] = useState(false)
   const inputRef = useRef<HTMLInputElement | null>(null)
   const { formattedTime, formattedDate } = useClock()
+  const { bookmarks, addBookmark, removeBookmark } = useBookmarks()
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         setActiveView('home')
+        setShowBookmarkModal(false)
         inputRef.current?.blur()
         return
       }
@@ -191,7 +196,11 @@ export function NewTabApp() {
           </div>
 
           <motion.div variants={itemVariants}>
-            <QuickAccess />
+            <QuickAccess
+              bookmarks={bookmarks}
+              onAddBookmark={() => setShowBookmarkModal(true)}
+              onRemoveBookmark={removeBookmark}
+            />
           </motion.div>
         </motion.div>
       </main>
@@ -204,6 +213,12 @@ export function NewTabApp() {
           <CommandsPanel onClose={() => setActiveView('home')} onSelect={handleCommandSelect} />
         )}
         {activeView === 'about' && <AboutPanel onClose={() => setActiveView('home')} />}
+        {showBookmarkModal && (
+          <BookmarkModal
+            onClose={() => setShowBookmarkModal(false)}
+            onAdd={addBookmark}
+          />
+        )}
       </AnimatePresence>
     </div>
   )

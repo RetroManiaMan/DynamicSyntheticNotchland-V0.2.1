@@ -107,6 +107,14 @@ export function SparkleIcon({ className, size }: IconProps) {
   )
 }
 
+export function ChevronLeftIcon({ className, size }: IconProps) {
+  return (
+    <svg className={className} {...svgProps(size)}>
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  )
+}
+
 /* Brand icons for Quick Access — filled, no stroke */
 export function GoogleIcon({ className, size = 20 }: IconProps) {
   return (

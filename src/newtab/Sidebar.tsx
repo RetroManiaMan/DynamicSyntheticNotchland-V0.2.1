@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-import { GridIcon, HomeIcon, SearchIcon, StarIcon, TerminalIcon, UserIcon } from './Icons'
+import { ChevronLeftIcon, GridIcon, HomeIcon, SearchIcon, StarIcon, TerminalIcon, UserIcon } from './Icons'
 
 type SidebarProps = {
   activeView: string
@@ -15,16 +16,19 @@ const navItems = [
 ]
 
 export function Sidebar({ activeView, onNavigate }: SidebarProps) {
+  const [isExpanded, setIsExpanded] = useState(false)
+
   return (
-    <motion.aside
-      className="nt-sidebar"
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="nt-sidebar-logo">
+    <aside className={`nt-sidebar ${isExpanded ? 'is-expanded' : ''}`}>
+      <button
+        type="button"
+        className="nt-sidebar-logo"
+        onClick={() => setIsExpanded((v) => !v)}
+        aria-label={isExpanded ? 'Collapse sidebar' : 'Expand sidebar'}
+      >
         <StarIcon size={22} />
-      </div>
+        <span className="nt-sidebar-logo-text">DSN</span>
+      </button>
 
       <div className="nt-sidebar-divider" />
 
@@ -48,6 +52,7 @@ export function Sidebar({ activeView, onNavigate }: SidebarProps) {
                 />
               )}
               <Icon size={20} className="nt-sidebar-item-icon" />
+              <span className="nt-sidebar-label">{label}</span>
             </button>
           )
         })}
@@ -62,7 +67,18 @@ export function Sidebar({ activeView, onNavigate }: SidebarProps) {
       >
         <span className="nt-sidebar-badge">12</span>
         <UserIcon size={20} />
+        <span className="nt-sidebar-label">Profile</span>
       </button>
-    </motion.aside>
+
+      <button
+        type="button"
+        className="nt-sidebar-toggle"
+        onClick={() => setIsExpanded((v) => !v)}
+        aria-label={isExpanded ? 'Collapse sidebar' : 'Expand sidebar'}
+      >
+        <ChevronLeftIcon size={18} className="nt-sidebar-toggle-icon" />
+        <span className="nt-sidebar-label">Collapse</span>
+      </button>
+    </aside>
   )
 }

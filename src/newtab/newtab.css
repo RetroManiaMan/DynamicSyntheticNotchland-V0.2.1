@@ -66,6 +66,18 @@
   box-shadow: var(--nt-shadow);
   height: calc(100vh - 32px);
   box-sizing: border-box;
+  transition: width 0.35s var(--nt-ease);
+  overflow: hidden;
+  animation: nt-sidebar-enter 0.4s var(--nt-ease) both;
+}
+
+@keyframes nt-sidebar-enter {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.nt-sidebar.is-expanded {
+  width: 180px;
 }
 
 .nt-sidebar-logo {
@@ -75,6 +87,9 @@
   width: 40px;
   height: 40px;
   border-radius: 12px;
+  border: 0;
+  background: transparent;
+  padding: 0;
   color: var(--nt-accent);
   margin-bottom: 4px;
   flex-shrink: 0;
@@ -401,6 +416,206 @@
   border-style: dashed;
 }
 
+/* ===== Sidebar Expanded ===== */
+
+.nt-sidebar-logo {
+  cursor: pointer;
+  transition: background var(--nt-transition);
+}
+
+.nt-sidebar-logo:hover {
+  background: var(--nt-surface-hover);
+}
+
+.nt-sidebar-logo-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--nt-text);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  margin-left: 2px;
+}
+
+.nt-sidebar.is-expanded .nt-sidebar-logo-text {
+  opacity: 1;
+}
+
+.nt-sidebar.is-expanded .nt-sidebar-logo {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0 12px;
+  gap: 8px;
+}
+
+.nt-sidebar.is-expanded .nt-sidebar-item {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0 12px;
+  gap: 12px;
+}
+
+.nt-sidebar-label {
+  font-size: 0.83rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.nt-sidebar.is-expanded .nt-sidebar-label {
+  opacity: 1;
+}
+
+.nt-sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 0;
+  background: transparent;
+  color: var(--nt-text-dim);
+  cursor: pointer;
+  transition: color var(--nt-transition), background var(--nt-transition);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.nt-sidebar-toggle:hover {
+  color: var(--nt-text);
+  background: var(--nt-surface-hover);
+}
+
+.nt-sidebar.is-expanded .nt-sidebar-toggle {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0 12px;
+  gap: 12px;
+}
+
+.nt-sidebar-toggle-icon {
+  transition: transform 0.3s var(--nt-ease);
+  flex-shrink: 0;
+}
+
+.nt-sidebar.is-expanded .nt-sidebar-toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* ===== Bookmark Items ===== */
+
+.nt-quick-access-bookmark {
+  position: relative;
+}
+
+.nt-quick-access-letter {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--nt-text);
+}
+
+.nt-quick-access-delete {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--nt-border-strong);
+  background: var(--nt-bg);
+  color: var(--nt-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  padding: 0;
+  z-index: 2;
+}
+
+.nt-quick-access-bookmark:hover .nt-quick-access-delete {
+  opacity: 1;
+}
+
+.nt-quick-access-delete:hover {
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.4);
+}
+
+/* ===== Bookmark Modal Form ===== */
+
+.nt-bookmark-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nt-bookmark-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nt-bookmark-field label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--nt-text-muted);
+  letter-spacing: 0.05em;
+}
+
+.nt-bookmark-field input {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--nt-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--nt-text);
+  font-size: 0.9rem;
+  transition: border-color var(--nt-transition), box-shadow var(--nt-transition);
+  box-sizing: border-box;
+}
+
+.nt-bookmark-field input:focus {
+  outline: none;
+  border-color: var(--nt-accent-border);
+  box-shadow: 0 0 0 3px var(--nt-accent-glow);
+}
+
+.nt-bookmark-field input::placeholder {
+  color: var(--nt-text-dim);
+}
+
+.nt-bookmark-submit {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--nt-accent-border);
+  background: var(--nt-accent-soft);
+  color: var(--nt-accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s var(--nt-ease);
+  margin-top: 4px;
+}
+
+.nt-bookmark-submit:hover:not(:disabled) {
+  background: rgba(212, 241, 30, 0.12);
+  transform: translateY(-1px);
+}
+
+.nt-bookmark-submit:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.nt-bookmark-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 /* ===== Overlays ===== */
 
 .nt-overlay {
@@ -647,12 +862,17 @@
 /* ===== Focus / Accessibility ===== */
 
 .nt-sidebar-item:focus-visible,
+.nt-sidebar-logo:focus-visible,
+.nt-sidebar-toggle:focus-visible,
 .nt-search-input:focus-visible,
 .nt-action:focus-visible,
 .nt-app-card:focus-visible,
 .nt-command-row:focus-visible,
 .nt-quick-access-item:focus-visible,
-.nt-overlay-close:focus-visible {
+.nt-quick-access-delete:focus-visible,
+.nt-overlay-close:focus-visible,
+.nt-bookmark-submit:focus-visible,
+.nt-bookmark-field input:focus-visible {
   outline: 2px solid var(--nt-accent-border);
   outline-offset: 2px;
 }
@@ -707,11 +927,13 @@
 @media (prefers-reduced-motion: reduce) {
   .nt-ambient,
   .nt-sidebar-item,
+  .nt-sidebar-toggle-icon,
   .nt-search-wrap,
   .nt-action,
   .nt-app-card,
   .nt-command-row,
-  .nt-quick-access-item {
+  .nt-quick-access-item,
+  .nt-quick-access-delete {
     animation: none !important;
     transition: none !important;
   }
