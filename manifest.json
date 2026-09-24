@@ -3,7 +3,7 @@
   "name": "Dynamic Synthetic Notchland",
   "version": "0.1.0",
   "description": "A compact, expandable browser notch interface shell.",
-  "permissions": [],
+  "permissions": ["history"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"

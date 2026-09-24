@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-import { ChevronLeftIcon, GridIcon, HomeIcon, SearchIcon, StarIcon, TerminalIcon, UserIcon } from './Icons'
+import { BookmarkIcon, ChevronLeftIcon, GridIcon, HomeIcon, SearchIcon, StarIcon, TerminalIcon, UserIcon } from './Icons'
+import type { HistoryItem } from './useRecentHistory'
 
 type SidebarProps = {
   activeView: string
   onNavigate: (view: string) => void
+  recentHistory: HistoryItem[]
 }
 
 const navItems = [
@@ -13,9 +15,10 @@ const navItems = [
   { id: 'search', label: 'Search', Icon: SearchIcon },
   { id: 'commands', label: 'Commands', Icon: TerminalIcon },
   { id: 'apps', label: 'Apps', Icon: GridIcon },
+  { id: 'bookmarks', label: 'Bookmarks', Icon: BookmarkIcon },
 ]
 
-export function Sidebar({ activeView, onNavigate }: SidebarProps) {
+export function Sidebar({ activeView, onNavigate, recentHistory }: SidebarProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
@@ -57,6 +60,21 @@ export function Sidebar({ activeView, onNavigate }: SidebarProps) {
           )
         })}
       </nav>
+
+      {isExpanded && recentHistory.length > 0 && (
+        <>
+          <div className="nt-sidebar-divider" />
+          <div className="nt-sidebar-recent">
+            <span className="nt-sidebar-section-label">Recent</span>
+            {recentHistory.map((item) => (
+              <a key={item.id} href={item.url} className="nt-sidebar-recent-item" title={item.url}>
+                <span className="nt-sidebar-recent-dot" />
+                <span className="nt-sidebar-recent-title">{item.title}</span>
+              </a>
+            ))}
+          </div>
+        </>
+      )}
 
       <div className="nt-sidebar-divider" />
 

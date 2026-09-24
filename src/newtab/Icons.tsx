@@ -107,6 +107,14 @@ export function SparkleIcon({ className, size }: IconProps) {
   )
 }
 
+export function BookmarkIcon({ className, size }: IconProps) {
+  return (
+    <svg className={className} {...svgProps(size)}>
+      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+    </svg>
+  )
+}
+
 export function ChevronLeftIcon({ className, size }: IconProps) {
   return (
     <svg className={className} {...svgProps(size)}>

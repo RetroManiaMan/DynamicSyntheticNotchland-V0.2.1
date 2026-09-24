@@ -3,9 +3,11 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 import { useClock } from './useClock'
 import { useBookmarks } from './useBookmarks'
+import { useRecentHistory } from './useRecentHistory'
 import { AboutPanel } from './AboutPanel'
 import { AppsLauncher } from './AppsLauncher'
 import { BookmarkModal } from './BookmarkModal'
+import { BookmarkSearch } from './BookmarkSearch'
 import { CommandsPanel } from './CommandsPanel'
 import { QuickAccess } from './QuickAccess'
 import { QuickActions } from './QuickActions'
@@ -13,7 +15,7 @@ import { SearchCommand } from './SearchCommand'
 import { Sidebar } from './Sidebar'
 import './newtab.css'
 
-type View = 'home' | 'commands' | 'apps' | 'about'
+type View = 'home' | 'commands' | 'apps' | 'about' | 'bookmarks'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -49,6 +51,7 @@ export function NewTabApp() {
   const inputRef = useRef<HTMLInputElement | null>(null)
   const { formattedTime, formattedDate } = useClock()
   const { bookmarks, addBookmark, removeBookmark } = useBookmarks()
+  const recentHistory = useRecentHistory()
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -63,6 +66,12 @@ export function NewTabApp() {
         event.preventDefault()
         setActiveView('home')
         inputRef.current?.focus()
+        return
+      }
+
+      if ((event.metaKey || event.ctrlKey) && event.key === 'b') {
+        event.preventDefault()
+        setActiveView('bookmarks')
         return
       }
 
@@ -149,12 +158,16 @@ export function NewTabApp() {
     }
   }
 
-  const sidebarActive = activeView === 'commands' ? 'commands' : activeView === 'apps' ? 'apps' : 'home'
+  const sidebarActive =
+    activeView === 'commands' ? 'commands'
+    : activeView === 'apps' ? 'apps'
+    : activeView === 'bookmarks' ? 'bookmarks'
+    : 'home'
 
   return (
     <div className="nt-page">
       <div className="nt-ambient" />
-      <Sidebar activeView={sidebarActive} onNavigate={handleNavigate} />
+      <Sidebar activeView={sidebarActive} onNavigate={handleNavigate} recentHistory={recentHistory} />
 
       <main className="nt-main">
         <motion.div
@@ -213,6 +226,9 @@ export function NewTabApp() {
           <CommandsPanel onClose={() => setActiveView('home')} onSelect={handleCommandSelect} />
         )}
         {activeView === 'about' && <AboutPanel onClose={() => setActiveView('home')} />}
+        {activeView === 'bookmarks' && (
+          <BookmarkSearch bookmarks={bookmarks} onClose={() => setActiveView('home')} />
+        )}
         {showBookmarkModal && (
           <BookmarkModal
             onClose={() => setShowBookmarkModal(false)}
