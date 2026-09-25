@@ -1,12 +1,12 @@
-# DSN
+# DSN! ❇️
 
 Dynamic Synthetic Notchland (DSN) is a Chrome extension that replaces the default new tab with a compact, green-and-black, Base44-inspired dashboard experience.
 
-## Version
+## 🟡 Version
 
 DSN v0.2.1
 
-## What’s new in v0.2.1
+## 🌟 What’s new in v0.2.1
 
 - Refined new-tab experience with a stronger DSN visual identity
 - Expanded search field for a more prominent browser-native layout
@@ -17,7 +17,7 @@ DSN v0.2.1
 - Removed the sidebar search action and edge clock from the final layout
 - Updated extension packaging to remain compatible with Chrome Manifest V3 requirements
 
-## Features
+## ✅ Features
 
 - Custom new-tab page override
 - Sidebar navigation with expand/collapse behavior
@@ -26,7 +26,7 @@ DSN v0.2.1
 - Minimal browser-native experience with DSN theming
 - Lightweight extension structure with no inline runtime script required
 
-## Installation
+## 🗄️ Installation
 
 1. Open Chrome or Edge.
 2. Go to chrome://extensions (or edge://extensions).
@@ -35,7 +35,7 @@ DSN v0.2.1
 5. Select this project folder.
 6. Open a new tab to see the DSN interface.
 
-## Pictures
+## 🖼️ Pictures
 <img width="1470" height="956" alt="Screenshot 2026-09-24 at 10 32 19 AM" src="https://github.com/user-attachments/assets/b384a90d-7516-4cd4-acfd-8b19908b80f4" />
 <img width="1429" height="798" alt="Screenshot 2026-09-22 at 5 27 59 PM" src="https://github.com/user-attachments/assets/e8967441-9e72-4d15-9f2f-be0367de67dc" />
 <img width="1429" height="798" alt="Screenshot 2026-09-22 at 5 28 11 PM" src="https://github.com/user-attachments/assets/e6e6b401-176b-4548-b7f2-d7ae8d99fbc1" />
@@ -46,7 +46,7 @@ DSN v0.2.1
 <img width="1470" height="956" alt="Screenshot 2026-09-24 at 10 31 59 AM" src="https://github.com/user-attachments/assets/661d1ce5-8b99-41f4-96b5-d9a67971ec27" />
 
 
-## Project structure
+## 🏛️ Project structure
 
 - manifest.json — Chrome extension manifest
 - notchtab.html — new-tab entry page
@@ -54,16 +54,16 @@ DSN v0.2.1
 - notchtab.js — runtime behavior for the page
 - asset source files — additional UI/build source under the assets folder
 
-## Licensing
+## 🪪 Licensing
 
 - Source code: MIT License — see LICENSE
 - Design assets, documentation, screenshots, and other creative files: CC BY-SA 4.0 — see LICENSE-ASSETS
 
-## Notes
+## 📝 Notes
 
 This repository contains both code and design assets. The code is permissively licensed for reuse and modification, while the non-code visual/design content is shared under Creative Commons Attribution-ShareAlike 4.0.
 
-## Status
+## ⚡️ Status
 
 The extension is currently aligned with the DSN v0.2.1 design direction and is ready for local installation and testing in Chrome-based browsers.
 ##
