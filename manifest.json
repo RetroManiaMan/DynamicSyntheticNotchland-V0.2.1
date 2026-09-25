@@ -1,12 +1,15 @@
 {
   "manifest_version": 3,
   "name": "Dynamic Synthetic Notchland",
-  "version": "0.1.0",
-  "description": "A compact, expandable browser notch interface shell.",
+  "version": "0.2.1",
+  "description": "A compact browser-native interface environment.",
   "permissions": [],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
+  },
+  "chrome_url_overrides": {
+    "newtab": "notchtab.html"
   },
   "content_scripts": [
     {

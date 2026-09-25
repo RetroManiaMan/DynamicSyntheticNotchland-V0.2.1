@@ -1,26 +1,57 @@
-# DSN V0.1
+# DSN
 
-Dynamic Synthetic Notchland (DSN) is a browser-native interface that brings dynamic controls, search, time, and more into a unified interactive notch.
+Dynamic Synthetic Notchland (DSN) is a Chrome extension that replaces the default new tab with a compact, green-and-black, Base44-inspired dashboard experience.
 
-This V0.1 implementation is a Manifest V3 Chrome-compatible extension built with React, TypeScript, and Vite. It injects an isolated shadow-root UI into normal HTTPS pages.
+## Version
 
-## Pictures
-<img width="1470" height="956" alt="Screenshot 2026-09-20 at 4 08 03 PM" src="https://github.com/user-attachments/assets/febc4968-5b09-43be-b5d7-3d273fcaab85" />
-<img width="1470" height="956" alt="Screenshot 2026-09-20 at 3 43 02 PM" src="https://github.com/user-attachments/assets/19fc4d7a-d4be-4afd-b067-67488fc4a73d" />
-<img width="1470" height="956" alt="Screenshot 2026-09-20 at 4 07 57 PM" src="https://github.com/user-attachments/assets/8d029c19-e442-45a1-8c02-3e7cc9cf19c6" />
-<img width="1470" height="956" alt="Screenshot 2026-09-20 at 4 02 59 PM" src="https://github.com/user-attachments/assets/793d94ea-6d00-4f59-9694-820e2de37745" />
-<img width="1470" height="956" alt="Screenshot 2026-09-20 at 3 43 44 PM" src="https://github.com/user-attachments/assets/bbfe8667-f8a1-4248-b412-49067c5f680c" />
+DSN v0.2.1
 
-## Development
+## What’s new in v0.2.1
 
-Install dependencies with Bun, then build the extension:
+- Refined new-tab experience with a stronger DSN visual identity
+- Expanded search field for a more prominent browser-native layout
+- Smooth expandable sidebar interaction with reduced motion stiffness
+- Quick Access bookmarks for frequently used websites
+- Clean green/black styling inspired by the Base44 aesthetic
+- DSN branding integrated into the sidebar state
+- Removed the sidebar search action and edge clock from the final layout
+- Updated extension packaging to remain compatible with Chrome Manifest V3 requirements
 
-```sh
-bun install
-bun run build
-```
+## Features
 
-Load the generated `dist` directory as an unpacked extension from the browser's extensions page.
-## 
-# For the best experience, KryptoBoltz suggests enabling the vertical tab feature!
-**Made with Base44 with VSCode and Chat. And with ❤️‍🔥 from Kryptoboltz! 😄**
+- Custom new-tab page override
+- Sidebar navigation with expand/collapse behavior
+- Search-first layout with a wider focus area
+- Fast Quick Access bookmarks
+- Minimal browser-native experience with DSN theming
+- Lightweight extension structure with no inline runtime script required
+
+## Installation
+
+1. Open Chrome or Edge.
+2. Go to chrome://extensions (or edge://extensions).
+3. Enable Developer Mode.
+4. Click Load unpacked.
+5. Select this project folder.
+6. Open a new tab to see the DSN interface.
+
+## Project structure
+
+- manifest.json — Chrome extension manifest
+- notchtab.html — new-tab entry page
+- notchtab.css — DSN styling
+- notchtab.js — runtime behavior for the page
+- asset source files — additional UI/build source under the assets folder
+
+## Licensing
+
+- Source code: MIT License — see LICENSE
+- Design assets, documentation, screenshots, and other creative files: CC BY-SA 4.0 — see LICENSE-ASSETS
+
+## Notes
+
+This repository contains both code and design assets. The code is permissively licensed for reuse and modification, while the non-code visual/design content is shared under Creative Commons Attribution-ShareAlike 4.0.
+
+## Status
+
+The extension is currently aligned to the DSN v0.2.1 design direction and is ready for local installation and testing in Chrome-based browsers.
