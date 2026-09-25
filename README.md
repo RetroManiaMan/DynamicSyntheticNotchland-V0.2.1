@@ -35,6 +35,17 @@ DSN v0.2.1
 5. Select this project folder.
 6. Open a new tab to see the DSN interface.
 
+## Pictures
+<img width="1470" height="956" alt="Screenshot 2026-09-24 at 10 32 19 AM" src="https://github.com/user-attachments/assets/b384a90d-7516-4cd4-acfd-8b19908b80f4" />
+<img width="1429" height="798" alt="Screenshot 2026-09-22 at 5 27 59 PM" src="https://github.com/user-attachments/assets/e8967441-9e72-4d15-9f2f-be0367de67dc" />
+<img width="1429" height="798" alt="Screenshot 2026-09-22 at 5 28 11 PM" src="https://github.com/user-attachments/assets/e6e6b401-176b-4548-b7f2-d7ae8d99fbc1" />
+<img width="1469" height="834" alt="Screenshot 2026-09-23 at 9 06 50 PM" src="https://github.com/user-attachments/assets/6a73c559-19dc-44ef-95d0-35bf86ad3b8f" />
+<img width="1470" height="833" alt="Screenshot 2026-09-23 at 9 06 57 PM" src="https://github.com/user-attachments/assets/9b794a28-1c9a-4286-ba3a-b5998463f167" />
+<img width="1470" height="834" alt="Screenshot 2026-09-24 at 10 05 39 AM" src="https://github.com/user-attachments/assets/4e9ae686-a56c-4159-96fe-04b36832fd11" />
+<img width="1470" height="956" alt="Screenshot 2026-09-24 at 10 31 45 AM" src="https://github.com/user-attachments/assets/50c9b6e2-9532-4e43-8c35-a3d64d2c0452" />
+<img width="1470" height="956" alt="Screenshot 2026-09-24 at 10 31 59 AM" src="https://github.com/user-attachments/assets/661d1ce5-8b99-41f4-96b5-d9a67971ec27" />
+
+
 ## Project structure
 
 - manifest.json — Chrome extension manifest
@@ -54,4 +65,7 @@ This repository contains both code and design assets. The code is permissively l
 
 ## Status
 
-The extension is currently aligned to the DSN v0.2.1 design direction and is ready for local installation and testing in Chrome-based browsers.
+The extension is currently aligned with the DSN v0.2.1 design direction and is ready for local installation and testing in Chrome-based browsers.
+##
+# For the best experience, KryptoBoltz suggests enabling vertical tabs (if supported) in your browser.
+**Made with ❤️‍🔥 from KryptoBoltz, Base44, Chat, with VSCode!**
