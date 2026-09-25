@@ -22,5 +22,5 @@ bun run build
 
 Load the generated `dist` directory as an unpacked extension from the browser's extensions page.
 ## 
-# For the best experience, KryptoBoltz suggests enabling the vertical tab feature.
-**Made with Base44 with VSCode and Chat. And with ❤️‍🔥 from Kryptoboltz**
+# For the best experience, KryptoBoltz suggests enabling the vertical tab feature!
+**Made with Base44 with VSCode and Chat. And with ❤️‍🔥 from Kryptoboltz! 😄**
