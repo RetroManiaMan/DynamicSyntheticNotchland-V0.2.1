@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { useMediaPlayer } from './media/useMediaPlayer'
 import { Clock } from './components/Clock'
 import { NotchCollapsed } from './components/NotchCollapsed'
 import { NotchExpanded } from './components/NotchExpanded'
@@ -12,6 +13,7 @@ export function DSNApp() {
   const shellRef = useRef<HTMLDivElement | null>(null)
   const expandedRef = useRef(false)
   const { formattedTime } = Clock()
+  const player = useMediaPlayer()
 
   useEffect(() => {
     expandedRef.current = isExpanded || isHovered
@@ -44,7 +46,7 @@ export function DSNApp() {
       } else if (event.key === '/' && expandedRef.current) {
         event.preventDefault()
         shellRef.current?.querySelector('.dsn-search-input')?.focus()
-      } else if (['1', '2', '3'].includes(event.key) && expandedRef.current) {
+      } else if (['1', '2', '3', '4'].includes(event.key) && expandedRef.current) {
         event.preventDefault()
         const buttons = shellRef.current?.querySelectorAll('.dsn-action')
         buttons?.[Number(event.key) - 1]?.click()
@@ -90,6 +92,8 @@ export function DSNApp() {
       collapsedContent={
         <NotchCollapsed
           time={formattedTime}
+          track={player.started ? player.track : undefined}
+          isPlaying={player.isPlaying}
           isExpanded={isExpanded || isHovered}
           onToggle={() => setIsExpanded((value) => !value)}
         />
@@ -100,6 +104,7 @@ export function DSNApp() {
           onSearchChange={setSearchValue}
           onSearchSubmit={handleSearchSubmit}
           onCollapse={() => setIsExpanded(false)}
+          player={player}
         />
       }
     />

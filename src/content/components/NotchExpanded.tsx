@@ -1,5 +1,7 @@
-import { type KeyboardEvent } from 'react'
+import { type KeyboardEvent, useState } from 'react'
 
+import type { MediaPlayerState } from '../media/useMediaPlayer'
+import { MediaPlayer } from './MediaPlayer'
 import { Clock } from './Clock'
 import { QuickActions } from './QuickActions'
 import { SearchBar } from './SearchBar'
@@ -9,6 +11,7 @@ type NotchExpandedProps = {
   onSearchChange: (value: string) => void
   onSearchSubmit: (value: string) => void
   onCollapse: () => void
+  player: MediaPlayerState
 }
 
 export function NotchExpanded({
@@ -16,8 +19,10 @@ export function NotchExpanded({
   onSearchChange,
   onSearchSubmit,
   onCollapse,
+  player,
 }: NotchExpandedProps) {
   const { formattedTime, formattedDate } = Clock()
+  const [view, setView] = useState(player.started ? 'media' : 'home')
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Escape') {
@@ -33,6 +38,10 @@ export function NotchExpanded({
       aria-label="Dynamic Synthetic Notchland panel"
       onKeyDown={handleKeyDown}
     >
+      {view === 'media' ? (
+        <MediaPlayer player={player} />
+      ) : (
+        <>
       <div className="dsn-expanded-topline">
         <div className="dsn-expanded-clock">{formattedTime}</div>
         <div className="dsn-expanded-date">{formattedDate}</div>
@@ -45,7 +54,10 @@ export function NotchExpanded({
         onCollapse={onCollapse}
       />
 
-      <QuickActions />
+        </>
+      )}
+
+      <QuickActions active={view === 'media' ? 'media' : undefined} onSelect={(id) => setView(id === 'media' ? 'media' : 'home')} />
     </div>
   )
 }
